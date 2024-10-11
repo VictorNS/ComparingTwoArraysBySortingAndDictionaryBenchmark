@@ -1,6 +1,6 @@
 ﻿namespace CompareTwoArraysBenchmark;
 
-public static class CountDifferencesDictionary
+public static class CountDifferencesHashSet
 {
 	public static (int added, int unchanged, int deleted) CountDifference(int[] existing, int[] input)
 	{
@@ -8,17 +8,12 @@ public static class CountDifferencesDictionary
 		var unchanged = 0;
 		var deleted = 0;
 
-		var exDic = new Dictionary<int, int>();
-		var inDic = new Dictionary<int, int>();
-
-		foreach (var item in existing)
-			exDic.Add(item, 0);
-		foreach (var item in input)
-			inDic.Add(item, 0);
+		var exDic = new HashSet<int>(existing);
+		var inDic = new HashSet<int>(input);
 
 		foreach (var item in input)
 		{
-			var has = exDic.ContainsKey(item);
+			var has = exDic.Contains(item);
 
 			if (has)
 				unchanged++;

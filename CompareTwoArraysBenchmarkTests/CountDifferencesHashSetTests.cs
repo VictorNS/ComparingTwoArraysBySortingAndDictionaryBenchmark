@@ -3,7 +3,7 @@ using Xunit;
 
 namespace CompareTwoArraysBenchmarkTests;
 
-public class CountDifferencesSortTests
+public class CountDifferencesHashSetTests
 {
 	[Theory]
 	[InlineData(new int[] { 1 }, new int[] { 2 }, 1, 0, 1)]
@@ -14,7 +14,7 @@ public class CountDifferencesSortTests
 	[InlineData(new int[] { 1, 2, 4, 5, 7, 8 }, new int[] { 2, 3, 4, 6 }, 2, 2, 4)]
 	public static void Test(int[] existing, int[] input, int _added, int _unchanged, int _deleted)
 	{
-		var (added, unchanged, deleted) = CountDifferencesSort.CountDifference(existing, input);
+		var (added, unchanged, deleted) = CountDifferencesHashSet.CountDifference(existing, input);
 
 		Assert.True(_added == added && _unchanged == unchanged && _deleted == deleted,
 	$@"+ {_added} -> {added}
